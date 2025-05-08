@@ -5,8 +5,8 @@ import um.programacion2.Gestion_Biblioteca.modelos.Usuario;
 import java.util.List;
 
 public interface UsuarioServicio {
-    Usuario guardar(Usuario usuario);
-    Usuario actualizar(Long id, Usuario usuario);
-    List<Usuario> obtenerTodos();
-    void eliminar(Long id);
+    Usuario save(Usuario usuario);
+    Usuario update(Long id, Usuario usuario);
+    List<Usuario> findAll();
+    void delete(Long id);
 }

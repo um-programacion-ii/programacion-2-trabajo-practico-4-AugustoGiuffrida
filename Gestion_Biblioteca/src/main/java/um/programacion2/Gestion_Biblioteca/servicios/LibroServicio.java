@@ -5,9 +5,9 @@ import um.programacion2.Gestion_Biblioteca.modelos.Libro;
 import java.util.List;
 
 public interface LibroServicio {
-    Libro guardar(Libro libro);
-    Libro buscarPorIsbn(String isbn);
-    List<Libro> obtenerTodos();
-    Libro actualizar(Long id,Libro libro);
-    void eliminar(Long id);
+    Libro save(Libro libro);
+    Libro findByIsbn(String isbn);
+    List<Libro> findAll();
+    Libro update(Long id,Libro libro);
+    void delete(Long id);
 }
