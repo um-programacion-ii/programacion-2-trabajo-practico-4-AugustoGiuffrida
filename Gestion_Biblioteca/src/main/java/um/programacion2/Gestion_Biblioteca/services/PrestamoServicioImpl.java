@@ -1,9 +1,9 @@
-package um.programacion2.Gestion_Biblioteca.servicios;
+package um.programacion2.Gestion_Biblioteca.services;
 
 import org.springframework.stereotype.Service;
-import um.programacion2.Gestion_Biblioteca.excepciones.PrestamoNoEncontradoExcepcion;
-import um.programacion2.Gestion_Biblioteca.modelos.Prestamo;
-import um.programacion2.Gestion_Biblioteca.repositorios.PrestamoRepositorio;
+import um.programacion2.Gestion_Biblioteca.exceptions.PrestamoNoEncontradoExcepcion;
+import um.programacion2.Gestion_Biblioteca.models.Prestamo;
+import um.programacion2.Gestion_Biblioteca.repositories.PrestamoRepositorio;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package um.programacion2.Gestion_Biblioteca.servicios;
+package um.programacion2.Gestion_Biblioteca.services;
 
-import um.programacion2.Gestion_Biblioteca.modelos.Prestamo;
+import um.programacion2.Gestion_Biblioteca.models.Prestamo;
 
 import java.util.List;
 

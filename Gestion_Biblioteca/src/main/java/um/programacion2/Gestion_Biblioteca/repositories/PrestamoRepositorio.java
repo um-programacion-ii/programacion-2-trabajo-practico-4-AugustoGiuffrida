@@ -1,6 +1,6 @@
-package um.programacion2.Gestion_Biblioteca.repositorios;
+package um.programacion2.Gestion_Biblioteca.repositories;
 
-import um.programacion2.Gestion_Biblioteca.modelos.Prestamo;
+import um.programacion2.Gestion_Biblioteca.models.Prestamo;
 
 import java.util.List;
 import java.util.Optional;
