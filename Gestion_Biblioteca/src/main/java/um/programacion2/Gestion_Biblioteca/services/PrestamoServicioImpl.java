@@ -2,6 +2,7 @@ package um.programacion2.Gestion_Biblioteca.services;
 
 import org.springframework.stereotype.Service;
 import um.programacion2.Gestion_Biblioteca.exceptions.PrestamoNoEncontradoExcepcion;
+import um.programacion2.Gestion_Biblioteca.models.Libro;
 import um.programacion2.Gestion_Biblioteca.models.Prestamo;
 import um.programacion2.Gestion_Biblioteca.repositories.PrestamoRepositorio;
 
@@ -26,6 +27,11 @@ public class PrestamoServicioImpl implements PrestamoServicio{
         }
         prestamo.setId(id);
         return prestamoRepositorio.save(prestamo);
+    }
+
+    @Override
+    public Prestamo findById(Long id){
+        return prestamoRepositorio.findById(id).orElseThrow(()-> new PrestamoNoEncontradoExcepcion(id));
     }
 
     @Override
