@@ -30,6 +30,11 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
     }
 
     @Override
+    public Usuario findById(Long id){
+        return usuarioRepositorio.findById(id).orElseThrow(()-> new UsuarioNoEncontradoExcepcion(id));
+    }
+
+    @Override
     public List<Usuario> findAll(){
         return usuarioRepositorio.findAll();
     }
