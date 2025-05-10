@@ -1,6 +1,6 @@
-package um.programacion2.Gestion_Biblioteca.repositorios;
+package um.programacion2.Gestion_Biblioteca.repositories;
 
-import um.programacion2.Gestion_Biblioteca.modelos.Usuario;
+import um.programacion2.Gestion_Biblioteca.models.Usuario;
 
 import java.util.List;
 import java.util.Optional;

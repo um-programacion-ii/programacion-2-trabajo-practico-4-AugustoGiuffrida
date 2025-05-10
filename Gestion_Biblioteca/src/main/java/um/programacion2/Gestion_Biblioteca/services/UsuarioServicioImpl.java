@@ -1,9 +1,9 @@
-package um.programacion2.Gestion_Biblioteca.servicios;
+package um.programacion2.Gestion_Biblioteca.services;
 
 import org.springframework.stereotype.Service;
-import um.programacion2.Gestion_Biblioteca.excepciones.UsuarioNoEncontradoExcepcion;
-import um.programacion2.Gestion_Biblioteca.modelos.Usuario;
-import um.programacion2.Gestion_Biblioteca.repositorios.UsuarioRepositorio;
+import um.programacion2.Gestion_Biblioteca.exceptions.UsuarioNoEncontradoExcepcion;
+import um.programacion2.Gestion_Biblioteca.models.Usuario;
+import um.programacion2.Gestion_Biblioteca.repositories.UsuarioRepositorio;
 
 import java.util.List;
 
@@ -27,6 +27,11 @@ public class UsuarioServicioImpl implements  UsuarioServicio{
         }
         usuario.setId(id);
         return usuarioRepositorio.save(usuario);
+    }
+
+    @Override
+    public Usuario findById(Long id){
+        return usuarioRepositorio.findById(id).orElseThrow(()-> new UsuarioNoEncontradoExcepcion(id));
     }
 
     @Override

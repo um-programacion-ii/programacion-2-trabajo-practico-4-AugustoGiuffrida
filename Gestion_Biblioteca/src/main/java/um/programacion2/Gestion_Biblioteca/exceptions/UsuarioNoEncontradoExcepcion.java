@@ -1,4 +1,4 @@
-package um.programacion2.Gestion_Biblioteca.excepciones;
+package um.programacion2.Gestion_Biblioteca.exceptions;
 
 public class UsuarioNoEncontradoExcepcion extends RuntimeException{
     public UsuarioNoEncontradoExcepcion(Long id){

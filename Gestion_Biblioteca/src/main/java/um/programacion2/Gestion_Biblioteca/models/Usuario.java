@@ -1,4 +1,4 @@
-package um.programacion2.Gestion_Biblioteca.modelos;
+package um.programacion2.Gestion_Biblioteca.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
-package um.programacion2.Gestion_Biblioteca.repositorios;
+package um.programacion2.Gestion_Biblioteca.repositories;
 
 import org.springframework.stereotype.Repository;
-import um.programacion2.Gestion_Biblioteca.modelos.Prestamo;
+import um.programacion2.Gestion_Biblioteca.models.Prestamo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

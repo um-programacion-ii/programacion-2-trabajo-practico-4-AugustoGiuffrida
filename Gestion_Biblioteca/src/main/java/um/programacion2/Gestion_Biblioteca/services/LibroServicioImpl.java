@@ -1,9 +1,9 @@
-package um.programacion2.Gestion_Biblioteca.servicios;
+package um.programacion2.Gestion_Biblioteca.services;
 
 import org.springframework.stereotype.Service;
-import um.programacion2.Gestion_Biblioteca.excepciones.LibroNoEncontradoException;
-import um.programacion2.Gestion_Biblioteca.modelos.Libro;
-import um.programacion2.Gestion_Biblioteca.repositorios.LibroRepositorio;
+import um.programacion2.Gestion_Biblioteca.exceptions.LibroNoEncontradoException;
+import um.programacion2.Gestion_Biblioteca.models.Libro;
+import um.programacion2.Gestion_Biblioteca.repositories.LibroRepositorio;
 
 import java.util.List;
 
@@ -19,6 +19,11 @@ public class LibroServicioImpl implements LibroServicio{
     @Override
     public Libro save(Libro libro){
         return libroRepositorio.save(libro);
+    }
+
+    @Override
+    public Libro findById(Long id){
+        return libroRepositorio.findById(id).orElseThrow(()->new LibroNoEncontradoException(id));
     }
 
     @Override
