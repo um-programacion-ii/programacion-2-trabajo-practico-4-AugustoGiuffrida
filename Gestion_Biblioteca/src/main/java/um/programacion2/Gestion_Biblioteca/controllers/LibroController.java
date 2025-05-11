@@ -58,12 +58,12 @@ public class LibroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         try {
             libroServicio.delete(id);
-            return ResponseEntity.ok("Libro con ID " + id + " eliminado correctamente.");
+            return ResponseEntity.noContent().build(); // 204
         } catch (LibroNoEncontradoException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
