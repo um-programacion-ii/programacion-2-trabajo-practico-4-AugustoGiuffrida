@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import um.programacion2.Gestion_Biblioteca.enums.LibroEstado;
 import um.programacion2.Gestion_Biblioteca.enums.UsuarioEstado;
-import um.programacion2.Gestion_Biblioteca.exceptions.LibroNoEncontradoException;
 import um.programacion2.Gestion_Biblioteca.exceptions.PrestamoNoEncontradoExcepcion;
 import um.programacion2.Gestion_Biblioteca.models.Libro;
 import um.programacion2.Gestion_Biblioteca.models.Prestamo;
@@ -25,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.mockito.Mockito.when;
 
 @WebMvcTest(PrestamoController.class)
 public class TestPrestamoController {
@@ -113,7 +111,7 @@ public class TestPrestamoController {
     }
 
     @Test
-    void PUTNonExistentBook_ReturnsStatus404() throws  Exception {
+    void PUTNonExistentLoan_ReturnsStatus404() throws  Exception {
         Long id= prestamo.getId();
         when(prestamoServicio.update(id,prestamo)).thenThrow(new PrestamoNoEncontradoExcepcion(id));
 
@@ -124,7 +122,7 @@ public class TestPrestamoController {
     }
 
     @Test
-    void DELETEBook_ReturnsStatus204() throws Exception {
+    void DELETELoan_ReturnsStatus204() throws Exception {
         Long id = 1L;
 
         mockMvc.perform(delete("/api/prestamos/" + id))
@@ -132,7 +130,7 @@ public class TestPrestamoController {
     }
 
     @Test
-    void  DELETEBook_NotFound_ReturnsStatus404() throws Exception{
+    void  DELETELoan_NotFound_ReturnsStatus404() throws Exception{
         Long id = 11L;
 
         doThrow(new PrestamoNoEncontradoExcepcion(id)).when(prestamoServicio).delete(id);
