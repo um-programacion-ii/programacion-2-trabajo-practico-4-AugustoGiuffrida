@@ -61,7 +61,7 @@ public class LibroController {
     public ResponseEntity<Void> delete(@PathVariable Long id){
         try {
             libroServicio.delete(id);
-            return ResponseEntity.noContent().build(); // 204
+            return ResponseEntity.noContent().build();
         } catch (LibroNoEncontradoException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

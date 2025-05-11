@@ -145,7 +145,7 @@ public class TestLibroController {
         Long id = 1L;
 
         mockMvc.perform(delete("/api/libros/" + id))
-                .andExpect(status().isNoContent()); // 204
+                .andExpect(status().isNoContent());
     }
 
     @Test
