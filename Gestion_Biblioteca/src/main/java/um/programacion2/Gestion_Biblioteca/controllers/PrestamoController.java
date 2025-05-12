@@ -49,12 +49,12 @@ public class PrestamoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
             prestamoServicio.delete(id);
-            return ResponseEntity.ok("Prestamo con ID " + id + " eliminado correctamente.");
+            return ResponseEntity.noContent().build();
         } catch (PrestamoNoEncontradoExcepcion e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 }
