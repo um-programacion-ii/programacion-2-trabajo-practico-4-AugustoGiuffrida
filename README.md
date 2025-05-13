@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Vg2EF-QZ)
 # 🚀 Trabajo Práctico: Sistema de Gestión de Biblioteca con Spring Framework
 
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.4.5-green)
@@ -118,8 +119,8 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 > 💡 **Nota**: Esta estimación considera la experiencia adquirida en trabajos anteriores y la complejidad de implementar una arquitectura en capas con Spring Framework. El tiempo se ha ajustado considerando que no se requiere implementación de persistencia real.
 
 ## 👨‍🎓 Información del Alumno
-- **Nombre y Apellido**: [Nombre y Apellido del Alumno]
-- **Legajo**: [Número de Legajo]
+- **Nombre y Apellido**: Augusto Giuffrida
+- **Legajo**: 60137
 
 ## 📋 Requisitos Previos
 
@@ -140,6 +141,225 @@ Desarrollar un sistema de gestión de biblioteca utilizando Spring Framework, im
 - JUnit 5.10.1
 - Mockito 5.8.0
 - Git y GitHub
+
+## 🚀 Clona y Ejecución del Proyecto
+
+### 🔁 Clonar el Repositorio
+```bash
+git clone https://github.com/um-programacion-ii/programacion-2-trabajo-practico-4-AugustoGiuffrida.git
+
+cd programacion-2-trabajo-practico-4-AugustoGiuffrida
+```
+### 🛠️ Requisitos del Sistema
+
+- Java 21 o superior
+- Maven 3.9.0 o superior
+- Git
+- (Opcional) Postman o cualquier cliente REST
+
+## 📦 Dependencias Principales
+
+Estas se encuentran en el archivo `pom.xml`
+
+## ▶️ Ejecutar el Proyecto
+```bash
+mvn clean install
+
+mvn spring-boot:run
+```
+La aplicación se iniciará en: `http://localhost:8080`
+
+## ▶️ Ejecutar tests
+
+```bash
+mvn test
+```
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── main/
+│   └── java/um/programacion2/Gestion_Biblioteca/
+│       ├── controllers/        # Controladores REST para cada recurso
+│       ├── services/           # Interfaces y lógica de negocio
+│       ├── repositories/       # Repositorios en memoria o base de datos
+│       ├── models/             # Clases de dominio: Libro, Usuario, Prestamo
+│       └── enums/              # Enumeraciones como EstadoLibro y EstadoUsuario
+│
+├── test/
+│   └── java/um/programacion2/Gestion_Biblioteca/
+│       ├── controllers/        # Pruebas de controladores con MockMvc
+│       ├── services/           # Pruebas unitarias con Mockito
+│       └── repositories/       # Pruebas de lógica de acceso a datos
+```
+
+## 🌐 Endpoints REST
+
+### 📚 Libros
+| Método | Endpoint               | Descripción                     |
+| ------ | ---------------------- | ------------------------------- |
+| GET    | `/api/libros`          | Listar todos los libros         |
+| GET    | `/api/libros/{id}`     | Buscar un libro por ID          |
+| GET    | `/api/libros/isbn/{i}` | Buscar un libro por ISBN        |
+| POST   | `/api/libros`          | Crear un nuevo libro            |
+| PUT    | `/api/libros/{id}`     | Modificar los datos de un libro |
+| DELETE | `/api/libros/{id}`     | Eliminar un libro por su ID     |
+
+### 👥 Usuarios
+| Método | Endpoint                   | Descripción                    |
+| ------ | -------------------------- | ------------------------------ |
+| GET    | `/api/usuarios`            | Listar todos los usuarios      |
+| GET    | `/api/usuarios/{id}`       | Buscar usuario por ID          |
+| POST   | `/api/usuarios`            | Registrar un nuevo usuario     |
+| PUT    | `/api/usuarios/{id}`       | Actualizar datos de un usuario |
+| DELETE | `/api/usuarios/{id}`       | Eliminar un usuario por su ID  |
+
+### 📄 Préstamos
+| Método | Endpoint              | Descripción                         |
+| ------ | --------------------- | ----------------------------------- |
+| GET    | `/api/prestamos`      | Listar todos los préstamos          |
+| GET    | `/api/prestamos/{id}` | Buscar préstamo por ID              |
+| POST   | `/api/prestamos`      | Registrar un nuevo préstamo         |
+| PUT    | `/api/prestamos/{id}` | Actualizar los datos de un préstamo |
+| DELETE | `/api/prestamos/{id}` | Eliminar un préstamo por su ID      |
+
+## 📬 Endpoints y Ejemplos de Uso
+
+### 📖 Obtener todos los libros
+
+#### 🖥️ cURL
+   ```bash
+  curl -X GET http://localhost:8080/api/libros
+  ```
+#### 📬 Postman
+- Método: GET
+- URL: `http://localhost:8080/api/libros`
+
+### 🔍 Obtener un libro por ID
+
+#### 🖥️ cURL
+```bash
+curl -X GET http://localhost:8080/api/libros/1
+```
+#### 📬 Postman
+- Método: GET
+- URL: `http://localhost:8080/api/libros/1`
+
+
+### 🔎 Obtener un libro por ISBN
+
+#### 🖥️ cURL
+```bash
+curl -X GET http://localhost:8080/api/libros/isbn/978-1234567890
+```
+#### 📬 Postman
+- Método: GET
+- URL: `http://localhost:8080/api/libros/isbn/978-1234567890`
+
+### ➕ Crear un nuevo libro
+
+#### 🖥️ cURL
+```bash
+curl -X POST http://localhost:8080/api/libros \
+-H "Content-Type: application/json" \
+-d '{
+"isbn": "978-1234567890",
+"titulo": "Nuevo Libro",
+"autor": "Autor Ejemplo",
+"estado": "DISPONIBLE"
+}'
+```
+#### 📬 Postman
+ - Método: POST
+ - URL: `http://localhost:8080/api/libros`
+ - Body > raw > JSON:
+
+```json
+{
+"isbn": "978-1234567890",
+"titulo": "Nuevo Libro",
+"autor": "Autor Ejemplo",
+"estado": "DISPONIBLE"
+}
+```
+
+### ✏️ Actualizar un libro existente
+
+#### 🖥️ cURL
+```bash
+curl -X PUT http://localhost:8080/api/libros/1 \
+-H "Content-Type: application/json" \
+-d '{
+"isbn": "978-1234567890",
+"titulo": "Libro Actualizado",
+"autor": "Nuevo Autor",
+"estado": "PRESTADO"
+}'
+```
+#### 📬 Postman
+- Método: PUT
+- URL: `http://localhost:8080/api/libros/1`
+- Body > raw > JSON:
+
+```json
+{
+"isbn": "978-1234567890",
+"titulo": "Libro Actualizado",
+"autor": "Nuevo Autor",
+"estado": "PRESTADO"
+}
+```
+### 🗑️ Eliminar un libro
+
+#### 🖥️ cURL
+```bash
+curl -X DELETE http://localhost:8080/api/libros/1
+```
+📬 Postman
+- Método: DELETE
+- URL: `http://localhost:8080/api/libros/1`
+
+
+## 🧱 Arquitectura y Diseño
+
+### 🗂️ Arquitectura en Capas
+El sistema sigue una arquitectura en capas, lo que facilita la separación de responsabilidades, mantenibilidad y testeo.
+
+- 📦 `models/`: Contiene las entidades del dominio como Libro, Usuario y Prestamo.
+
+
+- 📦 `repositories/`: Define las interfaces de acceso a datos utilizando, como LibroRepository, UsuarioRepository, etc. En este caso, se trabaja con una base de datos en memoria.
+
+
+- 📦 `services/`:Incluye la lógica de negocio. Cada entidad tiene su servicio asociado, por ejemplo LibroService.
+
+
+- 📦 `controllers/`: Expone la API REST. Maneja las solicitudes HTTP y delega el procesamiento a los servicios correspondientes. Usa anotaciones como @RestController, @RequestMapping, etc.
+
+
+- 📦 `enums/`: Agrupa los posibles estados y constantes del dominio (EstadoLibro, EstadoUsuario).
+
+### 🧰 Principios Aplicados
+- 🔁 **Inversión de Dependencias**:
+    Los controladores dependen de interfaces de servicio, no de implementaciones concretas. Esto permite pruebas más sencillas y flexibilidad.
+
+- 🔍 **Principio de Responsabilidad Única**:
+    Cada clase tiene una única razón para cambiar. Por ejemplo, LibroService se encarga solo de la lógica relacionada con libros.
+
+- 🔄 **DRY y KISS**:
+    Se evita la duplicación de código reutilizando métodos de servicio y validaciones simples.
+
+- 🔐 **Validaciones**:
+    Se aplican validaciones básicas en servicios (como existencia de recursos antes de actualizar/eliminar).
+
+### 🧪 Testing
+- ✔️ **Tests unitarios**:
+    Se realizan sobre los servicios utilizando Mockito para simular los repositorios.
+
+- 🌐 **Tests de Integración**:
+    Se implementan sobre los controladores utilizando MockMvc, validando el comportamiento de la API REST.
+
 
 ## 📘 Etapas del Trabajo
 
