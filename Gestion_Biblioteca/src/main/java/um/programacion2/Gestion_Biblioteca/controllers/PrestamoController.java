@@ -9,6 +9,10 @@ import um.programacion2.Gestion_Biblioteca.services.PrestamoServicio;
 
 import java.util.List;
 
+/**
+ * Controlador REST para la gestión de préstamos de libros.
+ * Provee endpoints para operaciones CRUD sobre la entidad Prestamo.
+ */
 @RestController
 @RequestMapping("api/prestamos")
 public class PrestamoController {
@@ -19,11 +23,22 @@ public class PrestamoController {
         this.prestamoServicio = prestamoServicio;
     }
 
+    /**
+     * Obtiene la lista de todos los préstamos registrados.
+     *
+     * @return Lista de préstamos con estado 200 OK.
+     */
     @GetMapping
     public ResponseEntity<List<Prestamo>> findAll(){
         return ResponseEntity.ok(prestamoServicio.findAll());
     }
 
+    /**
+     * Obtiene un préstamo específico por su ID.
+     *
+     * @param id Identificador único del préstamo.
+     * @return Préstamo encontrado o 404 si no existe.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Prestamo> findById(@PathVariable Long id){
         try {
@@ -34,11 +49,24 @@ public class PrestamoController {
         }
     }
 
+    /**
+     * Registra un nuevo préstamo.
+     *
+     * @param prestamo Objeto préstamo a crear.
+     * @return Préstamo creado con estado 201 CREATED.
+     */
     @PostMapping
     public ResponseEntity<Prestamo> create(@RequestBody Prestamo prestamo){
         return ResponseEntity.status(HttpStatus.CREATED).body(prestamoServicio.save(prestamo));
     }
 
+    /**
+     * Actualiza un préstamo existente.
+     *
+     * @param id ID del préstamo a actualizar.
+     * @param prestamo Objeto préstamo con datos actualizados.
+     * @return Préstamo actualizado o 404 si no se encuentra.
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Prestamo> update(@PathVariable Long id, @RequestBody Prestamo prestamo){
         try {
@@ -48,6 +76,12 @@ public class PrestamoController {
         }
     }
 
+    /**
+     * Elimina un préstamo por su ID.
+     *
+     * @param id ID del préstamo a eliminar.
+     * @return 204 No Content si fue eliminado, o 404 si no se encuentra.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
